@@ -8,6 +8,12 @@ from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader
 import streamlit_authenticator as stauth
 
 st.set_page_config(page_title="Insights from Interviews")
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+if "input_key" not in st.session_state:
+    st.session_state.input_key = 0
 # Load the .env variables
 load_dotenv()
 
@@ -28,6 +34,7 @@ name, authentication_status, username = authenticator.login("Login", "main" )
 
 
 
+
 if authentication_status == False:
     st.error("Username/password is incorrect")
 
@@ -35,11 +42,7 @@ if authentication_status == None:
     st.warning("Please enter your username and password")
 
 if authentication_status:
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
 
-    if "input_key" not in st.session_state:
-        st.session_state.input_key = 0
     
     # Load documents
     documents = SimpleDirectoryReader('sourcedata').load_data()
