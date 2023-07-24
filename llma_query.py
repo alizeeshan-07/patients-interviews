@@ -19,8 +19,8 @@ load_dotenv()
 
 ## Authentication ##
 
-names = ['Mr Carlos', 'Mr Pablo']
-usernames = ['carlos', 'pablo']
+names = ['Mr Carlos', 'Mr Pablo', 'Imperium']
+usernames = ['carlos', 'pablo', 'imperium']
 
 # loading hashed passwords
 
